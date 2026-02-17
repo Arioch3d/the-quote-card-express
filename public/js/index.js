@@ -1,15 +1,14 @@
 "use strict"
 
 async function getRandomImage(){
-    const clientId = "MY_API_KEY";
-    const endpoint = `https://api.unsplash.com/photos/random?client_id=${clientId}`;
+    const endpoint = "http://localhost:8080/api/v1/getRandomImage";
     try {
         const response = await fetch(endpoint);
         const returnedData = await response.json();
-        const recievedPhotoUrl = returnedData.urls.regular;
+        const recievedPhotoUrl = returnedData.data;
 
         const imgDiv = document.querySelector(".background-img");
-        imgDiv.style.backgroundImage = `url("${recievedPhotoUrl}")`;
+        imgDiv.style.backgroundImage = `url(${recievedPhotoUrl})`;
 } catch (error) {
     console.error(error)
 }
